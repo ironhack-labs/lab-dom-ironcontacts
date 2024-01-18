@@ -13,23 +13,24 @@ function getRandomContact() {
 
 const exampleRow = document.createElement("tr");
 const exampleRowContact = getRandomContact()
-exampleRow.innerHTML = `
-  <td>
-    <img src="${exampleRowContact.pictureUrl}" />
-  </td>
-  <td> ${exampleRowContact.name} </td>
-  <td> ${exampleRowContact.popularity.toFixed(2)} </td>
-  <td>
-    <button class="btn-delete">Delete</button>
-  </td>
-  <td>
-    <button class="btn-like">
-      <img src="./images/icon.png" alt="like" />
-    </button>
-  </td>
-`;
+createContactRow(exampleRowContact)
+// exampleRow.innerHTML = `
+//   <td>
+//     <img src="${exampleRowContact.pictureUrl}" />
+//   </td>
+//   <td> ${exampleRowContact.name} </td>
+//   <td> ${exampleRowContact.popularity.toFixed(2)} </td>
+//   <td>
+//     <button class="btn-delete">Delete</button>
+//   </td>
+//   <td>
+//     <button class="btn-like">
+//       <img src="./images/icon.png" alt="like" />
+//     </button>
+//   </td>
+// `;
 
-tableBody.appendChild(exampleRow);
+// tableBody.appendChild(exampleRow);
 
 
 
