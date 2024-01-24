@@ -45,7 +45,7 @@ const threeContacts = contacts.splice(0, 3);
       <img src="${contact.pictureUrl}" />
     </td>
     <td> ${contact.name} </td>
-    <td> ${contact.popularity} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
     <td>
     <button class="btn-delete">Delete</button>
     </td>
