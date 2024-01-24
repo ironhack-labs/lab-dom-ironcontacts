@@ -31,6 +31,21 @@ exampleRow.innerHTML = `
 tableBody.appendChild(exampleRow);
 
 
+let deleteButton = exampleRow.querySelector('.btn-delete')
+
+deleteButton.onclick = () => {
+  exampleRow.remove(exampleRow)
+}
+let likeButton = exampleRow.querySelector('.btn-like')
+
+likeButton.onclick = () => {
+
+  likeButton.classList.toggle('selected')
+}
+
+
+
+
 
 
 
@@ -40,22 +55,76 @@ const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
 
+threeContacts.forEach(element => {
+  const newRow = document.createElement('tr')
+  newRow.innerHTML = `
+  <td>
+    <img src="${element.pictureUrl}" />
+  </td>
+  <td> ${element.name} </td>
+  <td> ${element.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `
+  tableBody.appendChild(newRow);
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+  let deleteButton = newRow.querySelector('.btn-delete')
 
-  // ITERATION 3 - Like Buttons
+  deleteButton.onclick = () => {
+    newRow.remove(element)
+  }
 
-  // Your code goes here ...
+  let likeButton = newRow.querySelector('.btn-like')
 
-  
-  
+  likeButton.onclick = () => {
+
+    likeButton.classList.toggle('selected')
+  }
+})
 
 
-// Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+buttonAddRandom.onclick = () => {
+  const newRandomIndex = Math.floor(Math.random() * contacts.length)
+  const newSplicedArr = contacts.splice(newRandomIndex, 1)
+  const newRandomContact = newSplicedArr[0]
+
+  const newRandomRow = document.createElement("tr")
+  newRandomRow.innerHTML = `
+  <td>
+    <img src="${newRandomContact.pictureUrl}" />
+  </td>
+  <td> ${newRandomContact.name} </td>
+  <td> ${newRandomContact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`
+
+  tableBody.appendChild(newRandomRow)
+
+  let deleteButton = newRandomRow.querySelector('.btn-delete')
+
+  deleteButton.onclick = () => {
+    newRandomRow.remove(newRandomRow)
+  }
+  let likeButton = newRandomRow.querySelector('.btn-like')
+
+  likeButton.onclick = () => {
+
+    likeButton.classList.toggle('selected')
+  }
+
+
+}
