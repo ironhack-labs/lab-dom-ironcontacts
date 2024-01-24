@@ -27,6 +27,19 @@ exampleRow.innerHTML = `
     </button>
   </td>
 `;
+  const deleteButton = exampleRow.querySelector(".btn-delete");
+  deleteButton.addEventListener('click', function() {
+    exampleRow.remove();
+  })
+  const likeButton = exampleRow.querySelector(".btn-like");
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle("selected")
+    if (likeButton.classList.contains("selected")) {
+      likeButton.style.backgroundColor = "red";
+    } else {
+      likeButton.style.backgroundColor = "#d4d3d3";
+    }
+  })
 
 tableBody.appendChild(exampleRow);
 
@@ -35,10 +48,45 @@ tableBody.appendChild(exampleRow);
 
 
 // ITERATION 1 - Display 3 contacts
-// Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
+// Get the first 3 contacts from the 'contacts' array.]
 
 // Your code goes here ...
+const threeContacts = contacts.splice(0, 3);
+
+threeContacts.forEach((element) => {
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td>
+      <img src="${element.pictureUrl}" />
+    </td>
+    <td> ${element.name} </td>
+    <td> ${element.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+  const deleteButton = newRow.querySelector(".btn-delete");
+  deleteButton.addEventListener('click', function() {
+    newRow.remove();
+  })
+  const likeButton = newRow.querySelector(".btn-like");
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle("selected")
+    if (likeButton.classList.contains("selected")) {
+      likeButton.style.backgroundColor = "red";
+    } else {
+      likeButton.style.backgroundColor = "#d4d3d3";
+    }
+  })
+
+  tableBody.appendChild(newRow);
+})
+
 
 
   
@@ -59,3 +107,41 @@ const threeContacts = contacts.splice(0, 3);
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+const randomButton = document.querySelector("#btn-add-random")
+randomButton.addEventListener('click', () => {
+  const newSplicedArr = contacts.splice(randomIndex, 1);
+  const newContact = newSplicedArr[0];
+  
+  const anotherRow = document.createElement("tr");
+  anotherRow.innerHTML = `
+    <td>
+      <img src="${newContact.pictureUrl}" />
+    </td>
+    <td> ${newContact.name} </td>
+    <td> ${newContact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  const deleteButton = anotherRow.querySelector(".btn-delete");
+  deleteButton.addEventListener('click', function() {
+    anotherRow.remove();
+  })
+  const likeButton = anotherRow.querySelector(".btn-like");
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle("selected")
+    if (likeButton.classList.contains("selected")) {
+      likeButton.style.backgroundColor = "red";
+    } else {
+      likeButton.style.backgroundColor = "#d4d3d3";
+    }
+  });
+  tableBody.appendChild(anotherRow);
+})
