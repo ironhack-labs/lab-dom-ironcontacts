@@ -27,6 +27,19 @@ exampleRow.innerHTML = `
     </button>
   </td>
 `;
+  const deleteButton = exampleRow.querySelector(".btn-delete");
+  deleteButton.addEventListener('click', function() {
+    exampleRow.remove();
+  })
+  const likeButton = exampleRow.querySelector(".btn-like");
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle("selected")
+    if (likeButton.classList.contains("selected")) {
+      likeButton.style.backgroundColor = "red";
+    } else {
+      likeButton.style.backgroundColor = "#d4d3d3";
+    }
+  })
 
 tableBody.appendChild(exampleRow);
 
