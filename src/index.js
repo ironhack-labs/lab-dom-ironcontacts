@@ -39,23 +39,89 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
-
-
+  
+threeContacts.forEach(contact => {
+  const newRow = document.createElement("tr");
+  newRow.innerHTML =   
+    `<td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>`
+;
+  tableBody.appendChild(newRow);
+});
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  const newRow = document.createElement("tr");
+  const deleteButton = newRow.querySelectorAll(".btn-delete");
+  tableBody.appendChild(newRow);
+  deleteButton.addEventListener("click", () => {
+    newRow.remove();
   
-  
+  });
+
+ 
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
 
-  
+ const likeButton = newRow.querySelectorAll(".btn-like");
+ likeButton.addEventListener("click", () => {
+  newRow.classList.toggle("selected");
+ });
   
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+buttonAddRandom.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const randomContact = contacts[randomIndex];
+  const newRow = document.createElement("tr");
+  newRow.innerHTML =  
+  `
+  <td>
+    <img src="${randomContacts.pictureUrl}" />
+  </td>
+  <td> ${randomContacts.name} </td>
+  <td> ${randomContacts.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class = "btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+tableBody.removeChild(newRow);
+const deleteButton = newRow.querySelector(".btn-delete");
+const likeButton = newRow.querySelector(".btn-like");
+deleteButton.addEventListener("click", () => {
+  newRow.remove();
+});
+likeButton.addEventListener("click", () => {
+  toggleLike(newRow);
+});
+});
+
+function toggleLike(row) {
+  const likeButton = row.querySelector(".btn-like");
+  const likeIcon = likeButton.querySelector("img");
+  likeButton.classList.toggle("selected");
+  likeIcon.alt = likeButton.classList.toggle("selected") ? "unlike" : "like";
+}
