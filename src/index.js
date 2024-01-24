@@ -34,24 +34,91 @@ tableBody.appendChild(exampleRow);
 
 
 
+
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach((contact)=>{
+  const exampleRow = document.createElement("tr");
+exampleRow.innerHTML = `
+  <td>
+    <img src="${contact.pictureUrl}" />
+  </td>
+  <td> ${contact.name} </td>
+  <td> ${contact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
 
+tableBody.appendChild(exampleRow);
+})
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  contacts.forEach((contact)=>{
+    const exampleRow = document.createElement("tr");
+  exampleRow.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
   
+  tableBody.appendChild(exampleRow);
+  let deleteBtn = exampleRow.querySelector(".btn-delete")
+  deleteBtn.addEventListener('click', ()=>{
+    tableBody.removeChild(exampleRow)
+  })
+  })
   
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
-
+  contacts.forEach((contact)=>{
+    const exampleRow = document.createElement("tr");
+  exampleRow.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+  
+  tableBody.appendChild(exampleRow);
+  let likeBtn = exampleRow.querySelector(".btn-like")
+  likeBtn.addEventListener('click', ()=>{
+     likeBtn.classList.toggle("selected")
+  })
+  })
+  
   
   
 
