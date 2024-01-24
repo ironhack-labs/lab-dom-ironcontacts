@@ -68,10 +68,36 @@ threeContacts.forEach((contact) => {
 // ITERATION 2 - Delete Buttons
 
 // Your code goes here ...
+// find all delete btn
+const delBtnAll = document.querySelectorAll(".btn-delete")
+
+delBtnAll.forEach(btn =>{
+  btn.addEventListener("click", function (btnElm) {
+    console.log("moin")
+    //find closest Element of tr and remove it
+    btnElm.target.closest("tr").remove()
+  })
+  
+})
+
+console.log();
+
 
 // ITERATION 3 - Like Buttons
 
 // Your code goes here ...
+// find all like buttons 
+const likeBtnAll = document.querySelectorAll(".btn-like")
+
+likeBtnAll.forEach(likebtn => {
+  // console.log(likebtn)
+  likebtn.addEventListener("click", btnElm =>{
+    likebtn.classList.toggle("selected")
+  })
+})
+
+
+
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
