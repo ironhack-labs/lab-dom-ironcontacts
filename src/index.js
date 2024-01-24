@@ -3,7 +3,7 @@ const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
 
 // ITERATION 0 | Example Row
-
+// ... (unchanged)
 
 // ITERATION 1 - Display 3 Contacts
 const threeContacts = contacts.splice(0, 3);
@@ -37,7 +37,6 @@ threeContacts.forEach(contact => {
   tableBody.appendChild(contactRow);
 });
 
-// Helper function to create a contact row
 function createContactRow(contact) {
   const contactRow = document.createElement("tr");
   const contactInfoCells = `
