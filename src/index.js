@@ -41,21 +41,71 @@ const threeContacts = contacts.splice(0, 3);
 // Your code goes here ...
 
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
 
-  // ITERATION 3 - Like Buttons
+threeContacts.forEach((celebrity) => {
 
-  // Your code goes here ...
 
-  
-  
+
+  const nextRows = document.createElement("tr");
+
+  nextRows.innerHTML = `
+  <td>
+    <img src="${celebrity.pictureUrl}" />
+  </td>
+  <td> ${celebrity.name} </td>
+  <td> ${celebrity.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+  let deleteB = nextRows.querySelector(".btn-delete");
+
+  let likeB = nextRows.querySelector(".btn-like");
+
+  deleteB.onclick = function () {
+    nextRows.remove();
+  }
+
+  likeB.onclick = function () {
+    likeB.classList.toggle("selected");
+  }
+
+  tableBody.appendChild(nextRows);
+
+})
+
+
+// ITERATION 2 - Delete Buttons
+
+// Your code goes here ...
+
+
+
+
+// ITERATION 3 - Like Buttons
+
+// Your code goes here ...
+
+
+
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+const deleteBrrrr = document.getElementByClassName("btn-delete");
+
+deleteB.onclick = function () {
+  nextRows.remove();
+}
+
+
+
+let deleteB = document.querySelector(".btn-delete")
