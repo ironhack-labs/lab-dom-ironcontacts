@@ -36,23 +36,124 @@ tableBody.appendChild(exampleRow);
 
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
+const first3Contacts = contacts.slice(0, 3);
 
 // Your code goes here ...
 
+first3Contacts.forEach((contact) => {
+  
+  const newRow = document.createElement("tr");
+
+  const imgCell = document.createElement("td");
+  imgCell.innerHTML = `<img src="${contact.pictureUrl}" />`;
+
+  const nameCell = document.createElement("td");
+  nameCell.textContent = contact.name;
+
+  const popularityCell = document.createElement("td");
+  popularityCell.textContent = contact.popularity.toFixed(2);
+
+  const deleteButtonCell = document.createElement("td");
+  deleteButtonCell.innerHTML = `<button class="btn-delete">Delete</button>`;
+
+  const likeButtonCell = document.createElement("td");
+  likeButtonCell.innerHTML = `
+      <button class="btn-like">
+          <img src="./images/icon.png" alt="like" />
+      </button>
+  `;
+
+  newRow.appendChild(imgCell);
+  newRow.appendChild(nameCell);
+  newRow.appendChild(popularityCell);
+  newRow.appendChild(deleteButtonCell);
+  newRow.appendChild(likeButtonCell);
+
+ 
+  tableBody.appendChild(newRow);
+});
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  first3Contacts.forEach((contact) => {
+    
+   
+    const deleteButtonCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "btn-delete";
   
+    deleteButton.addEventListener("click", () => {
+      
+      newRow.remove();
+    });
+  
+    deleteButtonCell.appendChild(deleteButton);
+  
+    const likeButtonCell = document.createElement("td");
+    likeButtonCell.innerHTML = `
+        <button class="btn-like">
+            <img src="./images/icon.png" alt="like" />
+        </button>
+    `;
+  
+  
+    newRow.appendChild(imgCell);
+    newRow.appendChild(nameCell);
+    newRow.appendChild(popularityCell);
+    newRow.appendChild(deleteButtonCell);
+    newRow.appendChild(likeButtonCell);
+  
+    
+    tableBody.appendChild(newRow);
+  });
   
 
   // ITERATION 3 - Like Buttons
+  first3Contacts.forEach((contact) => {
 
-  // Your code goes here ...
-
+    const newRow = document.createElement("tr");
   
+    const imgCell = document.createElement("td");
+    imgCell.innerHTML = `<img src="${contact.pictureUrl}" />`;
+  
+    const nameCell = document.createElement("td");
+    nameCell.textContent = contact.name;
+  
+    const popularityCell = document.createElement("td");
+    popularityCell.textContent = contact.popularity.toFixed(2);
+  
+    const deleteButtonCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "btn-delete";
+  
+    deleteButton.addEventListener("click", () => {
+      newRow.remove();
+    });
+  
+    deleteButtonCell.appendChild(deleteButton);
+  
+    const likeButtonCell = document.createElement("td");
+    const likeButton = document.createElement("button");
+    likeButton.className = "btn-like";
+  
+    likeButton.addEventListener("click", () => {
+      newRow.classList.toggle("selected");
+    });
+  
+    likeButtonCell.appendChild(likeButton);
+  
+    newRow.appendChild(imgCell);
+    newRow.appendChild(nameCell);
+    newRow.appendChild(popularityCell);
+    newRow.appendChild(deleteButtonCell);
+    newRow.appendChild(likeButtonCell);
+  
+    tableBody.appendChild(newRow);
+  });
   
 
 
