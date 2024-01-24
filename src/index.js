@@ -36,26 +36,64 @@ tableBody.appendChild(exampleRow);
 
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
+const threeContacts = contacts.splice(0, 3); 
 
-// Your code goes here ...
-
-
-  
+threeContacts.forEach(function(element){
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+  <td>
+    <img src="${element.pictureUrl}" />
+  </td>
+  <td> ${element.name} </td>
+  <td> ${element.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `;
+  tableBody.appendChild(newRow);
   // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
-
+  const dltBttn = newRow.querySelector(".btn-delete")
+  dltBttn.addEventListener("click", () => {newRow.remove()})
   // ITERATION 3 - Like Buttons
-
-  // Your code goes here ...
-
+  const lkbttn = newRow.querySelector(".btn-like")
+  lkbttn.addEventListener("click", () => {
+    lkbttn.classList.toggle("selected")})
+})  
   
-  
-
-
 // Bonus: ITERATION 4 - Add Random Contacts
+//const buttonAddRandom = document.querySelector("#btn-add-random");
 
-// Your code goes here ...
+buttonAddRandom.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const randomContact = contacts[randomIndex];
+
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+  <td>
+    <img src="${randomContact.pictureUrl}" />
+  </td>
+  <td> ${randomContact.name} </td>
+  <td> ${randomContact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `;
+  tableBody.appendChild(newRow);
+
+  const dltBttn = newRow.querySelector(".btn-delete")
+  dltBttn.addEventListener("click", () => {newRow.remove()})
+
+  const lkbttn = newRow.querySelector(".btn-like")
+  lkbttn.addEventListener("click", () => {
+    lkbttn.classList.toggle("selected")})
+})
