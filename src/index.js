@@ -38,24 +38,89 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+// Your code goes here ..
+threeContacts.forEach((eachContacts) =>{
+  
+const threeContactsRow = document.createElement("tr")
+threeContactsRow.innerHTML = `
+<td>
+  <img src = "${eachContacts.pictureUrl}" />
+</td>
+<td> ${eachContacts.name} </td>
+<td> ${eachContacts.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
 
+tableBody.appendChild(threeContactsRow)
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
   
-  
+const deleteButton = threeContactsRow.querySelector(".btn-delete")
+deleteButton.onclick = () => {
+  threeContactsRow.remove(eachContacts)
+}
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
 
-  
-  
+const likeButton = threeContactsRow.querySelector(".btn-like")
+likeButton.onclick = () => {
+  likeButton.classList.toggle("selected")
+}  
+})
+
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+buttonAddRandom.onclick = () => {
+   const newRandomIndex = Math.floor(Math.random() * contacts.length);
+  const newSplicedArr = contacts.splice(newRandomIndex, 1);
+
+  const newRandomContact = newSplicedArr[0];
+
+const newRow = document.createElement("tr");
+newRow.innerHTML = `
+  <td>
+    <img src="${newRandomContact.pictureUrl}" />
+  </td>
+  <td> ${newRandomContact.name} </td>
+  <td> ${newRandomContact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+tableBody.appendChild(newRow)
+
+  
+const deleteButton = newRow.querySelector(".btn-delete")
+deleteButton.onclick = () => {
+  newRow.remove(newRandomContact)
+}
+
+
+const likeButton = newRow.querySelector(".btn-like")
+likeButton.onclick = () => {
+  likeButton.classList.toggle("selected")
+}  
+}
+
