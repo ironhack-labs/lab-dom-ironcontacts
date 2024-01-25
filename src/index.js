@@ -38,6 +38,94 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
+
+
+
+threeContacts.forEach(elm => {
+
+  const threeContactsRows = document.createElement("tr")
+
+  threeContactsRows.innerHTML =
+
+    `
+<td>
+    <img src="${elm.pictureUrl}" />
+  </td>
+  <td> ${elm.name} </td>
+  <td> ${elm.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+  tableBody.appendChild(threeContactsRows)
+
+  let deletebutton = threeContactsRows.querySelector(".btn-delete")
+
+  deletebutton.onclick = () => {
+    threeContactsRows.remove()
+  }
+
+  let likeButton = threeContactsRows.querySelector(".btn-like")
+
+  likeButton.onclick = () => {
+    likeButton.classList.toggle("selected")
+  }
+
+})
+
+
+let addRamdom = document.querySelector("#btn-add-random")
+
+
+
+addRamdom.onclick = () => {
+
+  const randomizer = Math.floor(Math.random() * contacts.length)
+
+  const splicedArr2 = contacts.splice(randomizer, 1)[0]
+
+  const randomRow = document.createElement("tr")
+
+  randomRow.innerHTML = `
+<td>
+    <img src="${splicedArr2.pictureUrl}" />
+  </td>
+  <td> ${splicedArr2.name} </td>
+  <td> ${splicedArr2.popularity.toFixed(1)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`
+  tableBody.appendChild(randomRow)
+
+  let deletebutton = randomRow.querySelector(".btn-delete")
+
+  deletebutton.onclick = () => {
+    randomRow.remove()
+  }
+
+  let likeButton = randomRow.querySelector(".btn-like")
+
+  likeButton.onclick = () => {
+    likeButton.classList.toggle("selected")
+  }
+
+}
+////arhgghgh
+
+//dos preguntas el "selected" y [0]
+
 // Your code goes here ...
 
 
