@@ -27,8 +27,15 @@ exampleRow.innerHTML = `
     </button>
   </td>
 `;
-
 tableBody.appendChild(exampleRow);
+const likeButton = exampleRow.querySelector(".btn-like")
+  likeButton.onclick = () => {
+    likeButton .classList.toggle('selected')
+  }
+const deleteButton = exampleRow.querySelector(".btn-delete")
+  deleteButton.onclick= () => {
+    exampleRow.remove()
+  }
 
 
 
@@ -39,23 +46,45 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach(contact => {
+  const newRow = document.createElement("tr")
+  newRow.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+  tableBody.appendChild(newRow);
 
-
-  
   // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+
+  // Your code goes here ..
+  const deleteButton = newRow.querySelector(".btn-delete")
+  deleteButton.onclick= () => {
+    newRow.remove(contact)
+  }
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
-
+  const likeButton = newRow.querySelector(".btn-like")
+  likeButton.onclick = () => {
+    likeButton .classList.toggle('selected')
+  }
   
   
 
 
-// Bonus: ITERATION 4 - Add Random Contacts
+  // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+  // Your code goes here ...
+})
