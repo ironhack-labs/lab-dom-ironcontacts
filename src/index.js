@@ -39,14 +39,70 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+const aleatoryRows1 = document.createElement("tr"); 
+aleatoryRows1.innerHTML = `
+  <td>
+    <img src="${threeContacts.pictureUrl}"
+  </td>
+  <td> ${threeContacts.name} </td>
+  <td> ${threeContacts.popularity} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+tableBody.appendChild(aleatoryRows1)
+
+const aleatoryRows2 = document.createElement("tr"); 
+aleatoryRows2.innerHTML = `
+  <td>
+    <img src="${threeContacts.pictureUrl}"
+  </td>
+  <td> ${threeContacts.name} </td>
+  <td> ${threeContacts.popularity} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+tableBody.appendChild(aleatoryRows2)
+
+const aleatoryRows3 = document.createElement("tr"); 
+aleatoryRows3.innerHTML = `
+  <td>
+    <img src="${threeContacts.pictureUrl}"
+  </td>
+  <td> ${threeContacts.name} </td>
+  <td> ${threeContacts.popularity} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+tableBody.appendChild(aleatoryRows3)
 
 
-  
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
-  
-  
+  let btnNode = aleatoryRows3.querySelector(".btn-delete")
+
+  btnNode.addEventListener("click", () => {
+      aleatoryRows3.remove()
+  });
+
 
   // ITERATION 3 - Like Buttons
 
