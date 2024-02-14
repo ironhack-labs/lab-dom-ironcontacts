@@ -30,7 +30,11 @@ exampleRow.innerHTML = `
 
 tableBody.appendChild(exampleRow);
 
+let button = exampleRow.querySelector('.btn-delete');
 
+button.addEventListener("click", function(event) {
+ exampleRow.remove();
+});
 
 
 
@@ -39,7 +43,41 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+//console.log(threeContacts);
+threeContacts.forEach(function(element){
+  const newRow = document.createElement("tr");
+newRow.innerHTML = `
+  <td>
+    <img src="${element.pictureUrl}" />
+  </td>
+  <td> ${element.name} </td>
+  <td> ${element.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
 
+tableBody.appendChild(newRow);
+
+let button = newRow.querySelector('.btn-delete');
+
+button.addEventListener("click", function(event) {
+ newRow.remove();
+});
+ // Like button functionality
+
+let likeButton = newRow.querySelector('.btn-like');
+
+likeButton.addEventListener("click", function(event) {
+   likeButton.classList.toggle("selected");
+ });
+
+});
 
   
   // ITERATION 2 - Delete Buttons
