@@ -33,12 +33,28 @@ tableBody.appendChild(exampleRow);
 
 
 
+// Iteration 1 - Display 3 Contacts
+const firstThreeContacts = contacts.splice(0, 3); // Get the first 3 contacts
 
-// ITERATION 1 - Display 3 contacts
-// Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
-
-// Your code goes here ...
+firstThreeContacts.forEach(contact => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" width="100" />
+    </td>
+    <td>${contact.name}</td>
+    <td>${contact.popularity.toFixed(2)}</td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+  tableBody.appendChild(row);
+});
 
 
   
@@ -46,16 +62,54 @@ const threeContacts = contacts.splice(0, 3);
   
   // Your code goes here ...
   
-  
+  document.querySelectorAll('.btn-delete').forEach(button => {
+    button.addEventListener('click', function() {
+      this.parentElement.parentElement.remove();
+    });
+  });
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
 
   
-  
+  document.querySelectorAll('.btn-like').forEach(button => {
+    button.addEventListener('click', function() {
+      this.classList.toggle('selected');
+    });
+  });
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+// Bonus: Iteration 4 - Add Random Contacts
+buttonAddRandom.addEventListener('click', function() {
+  if (contacts.length > 0) {
+    const randomIndex = Math.floor(Math.random() * contacts.length);
+    const randomContact = contacts.splice(randomIndex, 1)[0];
+    
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <img src="${randomContact.pictureUrl}" width="100" />
+      </td>
+      <td>${randomContact.name}</td>
+      <td>${randomContact.popularity.toFixed(2)}</td>
+      <td>
+        <button class="btn-delete">Delete</button>
+      </td>
+      <td>
+        <button class="btn-like">
+          <img src="./images/icon.png" alt="like" />
+        </button>
+      </td>
+    `;
+    tableBody.appendChild(row);
+
+    // Reapply event listeners for delete and like buttons
+    // This should be refactored to avoid duplicate code (not shown here)
+  } else {
+    alert('No more contacts to add.');
+  }
+});
