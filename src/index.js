@@ -56,28 +56,17 @@ tableBody.appendChild(exampleRow);
         </button>
       </td>`;
       tableBody.appendChild(row);
+// ITERATION 2 - Delete Buttons
+      const deleteButton = row.querySelector(".btn-delete");
+      deleteButton.addEventListener("click",() => row.remove());
+
+ // ITERATION 3 - Like Buttons
+      const likeButton = row.querySelector(".btn-like");
+      likeButton.addEventListener("click", () => likeButton.classList.toggle("selected"))
+
   });
 
 
-      
-// To tell the HTML to include them    
-  
-
-  
-  // ITERATION 2 - Delete Buttons
-  const deleteButton = threeContacts.querySelector(".btn-delete");
-
-  deleteButton.addEventListener('click', remove(row));
-  
-  
-  
-
-  // ITERATION 3 - Like Buttons
-
-  // Your code goes here ...
-
-  
-  
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
