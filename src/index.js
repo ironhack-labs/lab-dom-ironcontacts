@@ -71,4 +71,5 @@ tableBody.appendChild(exampleRow);
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+buttonAddRandom.addEventListener("click", () => buttonAddRandom)
+const addRandomContact = Math.floor(Math.random() * contacts.length)
