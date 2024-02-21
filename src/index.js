@@ -53,11 +53,13 @@ threeContacts.forEach((contact) => {
     </td>
   `;
   tableBody.appendChild(row);
+  const deletedButton = row.querySelector(".btn-delete");
+  deletedButton.addEventListener("click", function (e) {
+    row.remove();
+  });
 });
 
 // ITERATION 2 - Delete Buttons
-
-// Your code goes here ...
 
 // ITERATION 3 - Like Buttons
 
