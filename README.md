@@ -1,6 +1,6 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+<!-- ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# LAB | DOM IronContacts
+# LAB | DOM IronContacts -->
 
 <p align="center">
   <img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/labs/lab-dom-ironcontacts/00-lab-dom-ironcontacts-intro.gif" alt="finished lab example">
