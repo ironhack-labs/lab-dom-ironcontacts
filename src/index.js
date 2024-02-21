@@ -53,17 +53,22 @@ threeContacts.forEach((contact) => {
     </td>
   `;
   tableBody.appendChild(row);
+
+  // ITERATION 2 - Delete Buttons
+
   const deletedButton = row.querySelector(".btn-delete");
   deletedButton.addEventListener("click", function (e) {
     row.remove();
   });
+
+  // ITERATION 3 - Like Buttons
+
+  const likeButton = row.querySelector(".btn-like");
+  likeButton.addEventListener("click", function (e) {
+    console.log("clicked like button");
+    likeButton.classList.toggle("selected");
+  });
 });
-
-// ITERATION 2 - Delete Buttons
-
-// ITERATION 3 - Like Buttons
-
-// Your code goes here ...
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
