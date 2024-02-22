@@ -34,7 +34,7 @@ tableBody.appendChild(exampleRow);
 
 const likeButton = exampleRow.querySelector(".btn-like");
 
-  likeButton.addEventListener("click", function (){
+  likeButton.addEventListener("click", function () {
 
     likeButton.classList.toggle("selected")
   })
@@ -42,7 +42,7 @@ const likeButton = exampleRow.querySelector(".btn-like");
   // delete button for example 
 
   const deleteButton = exampleRow.querySelector(".btn-delete");
-  deleteButton.addEventListener("click", function (){
+  deleteButton.addEventListener("click", function () {
     exampleRow.remove()
   })
 
@@ -85,7 +85,9 @@ tableBody.appendChild(row);
   // Your code goes here ...
   
   const deleteButton = row.querySelector(".btn-delete");
+
   deleteButton.addEventListener("click", function (){
+
     row.remove()
   })
 
