@@ -54,7 +54,8 @@ for (let i = 0; i < threeContacts.length; i++) {
 
   tableBody.appendChild(newRow);
 
-  newRow.querySelector(".btn-delete").addEventListener("click", () => {
+  const deleteBtn= newRow.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", () => {
     newRow.remove();
   })
   
