@@ -1,61 +1,65 @@
-// HTML ELEMENTS
-const buttonAddRandom = document.querySelector("#btn-add-random");
-const tableBody = document.querySelector("tbody#contacts");
+const body = document.querySelector("body");
+const startButton = document.querySelector("#start-game");
+
+const splashScreen = document.querySelector("#splash-screen");
+const gameScreen = document.querySelector("#game-screen");
+const gameoverScreen = document.querySelector("#gameover-screen");
+const playerInput = document.querySelector("#player-input");
+let playerName = "";
 
 
-// ITERATION 0 | Example Row
-// Splice 1 element from the contacts array at the random index
-const randomIndex = Math.floor(Math.random() * contacts.length);
-const splicedArr = contacts.splice(randomIndex, 1);
+const h1Element = document.getElementById("heading");
 
-// Get the element from the spliced array
-const randomContact = splicedArr[0];
+console.log("our h1 element", h1Element);
 
-const exampleRow = document.createElement("tr");
-exampleRow.innerHTML = `
-  <td>
-    <img src="${randomContact.pictureUrl}" />
-  </td>
-  <td> ${randomContact.name} </td>
-  <td> ${randomContact.popularity.toFixed(2)} </td>
-  <td>
-    <button class="btn-delete">Delete</button>
-  </td>
-  <td>
-    <button class="btn-like">
-      <img src="./images/icon.png" alt="like" />
-    </button>
-  </td>
-`;
-
-tableBody.appendChild(exampleRow);
+h1Element.innerText = "Our splash Screen";
 
 
+const h2Element = document.querySelector(".h2");
+console.log("here is my h2 element", h2Element);
+
+h2Element.style.color = "rgb(188, 43, 123)";
+
+h2Element.style.backgroundColor = "blue";
 
 
-
-// ITERATION 1 - Display 3 contacts
-// Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
-
-// Your code goes here ...
+const pTagElement = document.querySelector("p");
+pTagElement.style.color = "red";
 
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
-
-  // ITERATION 3 - Like Buttons
-
-  // Your code goes here ...
-
-  
-  
+gameScreen.style.display = "none";
+gameoverScreen.style.display = "none";
 
 
-// Bonus: ITERATION 4 - Add Random Contacts
+const ourNewH2 = document.createElement("h2");
+ourNewH2.innerText = "Wow look we just created this!";
 
-// Your code goes here ...
+ourNewH2.setAttribute("class", "some-cool-class");
+ourNewH2.setAttribute("card-name", "Shazas example");
+
+ourNewH2.classList.add("another-cool-class");
+
+ourNewH2.classList.remove("some-cool-class");
+
+splashScreen.appendChild(ourNewH2);
+
+startButton.addEventListener("click", () => {
+  startGame();
+  getPlayerName();
+});
+
+function startGame() {
+  console.log("clicked");
+
+  splashScreen.style.display = "none";
+
+  gameScreen.style.display = "block";
+}
+function getPlayerName() {
+  console.log(playerInput.value);
+  playerName = playerInput.value;
+
+  const playerElement = document.createElement("h2");
+  playerElement.innerText = `Let's go ${playerName}!!!`;
+  gameScreen.insertBefore(playerElement, h2Element);
+}
