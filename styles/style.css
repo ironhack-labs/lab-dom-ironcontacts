@@ -1,6 +1,6 @@
 /* Set font size for whole page and for rem */
 html {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 h1 {
@@ -10,7 +10,7 @@ h1 {
 }
 
 img {
-  height: 70px;
+  height: 100px;
 }
 
 
@@ -54,31 +54,21 @@ td {
   background-color: #fd9a9a;
 }
 
-
-.btn-like {
-  border: none;
-  text-decoration: none;
-  background-color: #d4d3d3;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 34px;
+button {
+  font-size: 16px;
+  width: 80px;
   height: 34px;
-  border-radius: 50%;
-  padding-top: 4px;
-  margin: 0 auto;
+  padding: 3px 16px;
+  border-radius: 4px;  
 }
 
-.btn-like:hover {
+
+
+button:hover {
   transition: 0.2s;
   background-color: #a9a7a7;  
 }
 
-.btn-like img {
-  width: 18px;
-  height: 18px;
-}
 
 .btn-like.selected {
   background-color: #fd9a9a;

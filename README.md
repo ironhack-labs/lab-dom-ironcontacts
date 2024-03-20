@@ -100,7 +100,7 @@ The code for the example row is located in the `index.js` file, where indicated 
 
 In the following iterations, you will be adding more rows to the table. The data for the rows comes from the `contacts.js` file, which is already linked and loaded in the `index.html` file. You can access it by using the `contacts` variable. For example, `contacts[0]` will give you the first contact object in the array.
 
-
+<tr><td><img src="https://image.tmdb.org/t/p/w500/2dGBb1fOcNdZjtQToVPFxXjm4ke.jpg"></td><td>Al Pacino</td><td><button>Delete</button></td><td><button class="btn-like">🤍</button></td></tr>
 
 <br>
 
@@ -110,8 +110,8 @@ In the following iterations, you will be adding more rows to the table. The data
 
 Let's start by displaying the first 3 contacts in the table. To do so, you will need to:
 
-1. Get the **first 3 contacts** from the `contacts` array.<br>You can use the `splice()` method for this. Remember that the `splice()` method modifies the original array, and returns the results as a new array.
-2. Iterate over the newly obtained array of 3 contacts and, for each contact, create a new table row and append it to the table body.<br>You can use the *Iteration 0* code as an example of how to create a new table row and what its structure should be.
+1. Get the **first 3 contacts** from the `contacts` array.<br>You can use the `splice()` method for this.
+2. Iterate over the newly obtained array of 3 contacts and, for each contact, create a new table row and append it to the table body.<br>You can use the *Iteration 0* code as an example of what its structure should be.
 3. Append each new table row to the table body. You can use the `appendChild()` method for this.
 
 <br>

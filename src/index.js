@@ -4,33 +4,45 @@ const tableBody = document.querySelector("tbody#contacts");
 
 
 // ITERATION 0 | Example Row
-// Splice 1 element from the contacts array at the random index
-const randomIndex = Math.floor(Math.random() * contacts.length);
-const splicedArr = contacts.splice(randomIndex, 1);
+const exampleContact =   {
+  name: "Al Pacino",
+  pictureUrl: "https://image.tmdb.org/t/p/w500/2dGBb1fOcNdZjtQToVPFxXjm4ke.jpg",
+}
 
-// Get the element from the spliced array
-const randomContact = splicedArr[0];
-
+// Create a new row element to the table body (tbody)
 const exampleRow = document.createElement("tr");
-exampleRow.innerHTML = `
-  <td>
-    <img src="${randomContact.pictureUrl}" />
-  </td>
-  <td> ${randomContact.name} </td>
-  <td> ${randomContact.popularity.toFixed(2)} </td>
-  <td>
-    <button class="btn-delete">Delete</button>
-  </td>
-  <td>
-    <button class="btn-like">
-      <img src="./images/icon.png" alt="like" />
-    </button>
-  </td>
-`;
-
 tableBody.appendChild(exampleRow);
 
+// Create table cell elements
+const tdName = document.createElement("td");
+const tdPicture = document.createElement("td");
+const tdDelete = document.createElement("td");
+const tdLike = document.createElement("td");
 
+// Append all cell elements (td) to the row (tr)
+exampleRow.appendChild(tdPicture);
+exampleRow.appendChild(tdName);
+exampleRow.appendChild(tdDelete);
+exampleRow.appendChild(tdLike);
+
+// Add an image to the first table cell
+const imgPicture = document.createElement("img");
+imgPicture.setAttribute("src", exampleContact.pictureUrl);
+tdPicture.appendChild(imgPicture);
+
+// Show the contact's name in the second table cell
+tdName.textContent = exampleContact.name;
+
+// Add a "Delete" button to the fourth cell
+const btnDelete = document.createElement("button");
+btnDelete.textContent = "Delete";
+tdDelete.appendChild(btnDelete);
+
+// Add a like button to the fifth cell
+const btnLike = document.createElement("button");
+btnLike.textContent = "🤍";
+btnLike.className = "btn-like";
+tdLike.appendChild(btnLike);
 
 
 
