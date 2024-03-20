@@ -39,21 +39,51 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+const tableBody = document.getElementById('contactsBody');
 
+// Iterate over the first 3 contacts and create a new row in the table for each one
+threeContacts.forEach(contact => {
+  const newRow = document.createElement('tr');
 
+  const nameCell = document.createElement('td');
+  nameCell.textContent = contact.name;
+  newRow.appendChild(nameCell);
+
+  const emailCell = document.createElement('td');
+  emailCell.textContent = contact.email;
+  newRow.appendChild(emailCell);
+
+  const phoneCell = document.createElement('td');
+  phoneCell.textContent = contact.phone;
+  newRow.appendChild(phoneCell);
+
+  tableBody.appendChild(newRow);
+});
+    
+   
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
   
+  const deleteButtonCell = document.createElement('td');
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', () => {
+    newRow.remove();
+  });
   
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
 
-  
-  
+  const editButtonCell = document.createElement('td');
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Edit';
+  editButton.addEventListener('click', () => {
+    console.log('Edit button clicked for:', contact);
+  });
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
