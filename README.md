@@ -79,6 +79,8 @@ First, let's help you get familiar with the starter code. Take a moment and revi
 
 <br>
 
+#### Example Row
+
 Next, open the `index.html` file in your browser using the Live Server extension. You should see a table with 1 *example row*, similar to the one shown in the image below.
 
 The code for the example row is located in the `index.html` file, where indicated by the comment `<!-- Example row -->`. You can use this row as a reference for the structure of the rows you will be adding in the following iterations.
@@ -98,6 +100,7 @@ The code for the example row is located in the `index.html` file, where indicate
 
 <br>
 
+#### Contacts
 
 In the following iterations, you will be adding more rows to the table. The data for the rows comes from the `contacts.js` file, which is already linked and loaded in the `index.html` file. You can access it by using the `contacts` variable. For example, `contacts[0]` will give you the first contact object in the array.
 
