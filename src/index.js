@@ -91,3 +91,39 @@ function likeContact(event) {
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+function addRandomContact() {
+  if (contacts.length === 0) {
+    console.log("No more contacts to add.");
+    return;
+  }
+
+  // Select a random contact
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const randomContact = contacts.splice(randomIndex, 1)[0];
+
+  // Create the row for the new contact
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td>
+      <img src="${randomContact.pictureUrl}" />
+    </td>
+    <td> ${randomContact.name} </td>
+    <td> ${randomContact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  // Append the new row to the table body
+  tableBody.appendChild(newRow);
+
+  const likeButton = newRow.querySelector(".btn-like");
+  likeButton.addEventListener("click", likeContact);
+}
+
+buttonAddRandom.addEventListener("click", addRandomContact);
