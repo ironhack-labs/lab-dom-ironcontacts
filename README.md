@@ -73,7 +73,7 @@ Your task is to create a digital contact list for the producer using Javascript 
 
 ## Instructions
 
-### Iteration 0 | Example Row
+### Iteration 0 | Starter Code
 
 First, let's help you get familiar with the starter code. Take a moment and review the starter code provided in the files `index.html` and `index.js`.
 
@@ -98,8 +98,6 @@ The code for the example row is located in the `index.html` file, where indicate
 
 <br>
 
-
-### Iteration 0 | Contacts
 
 In the following iterations, you will be adding more rows to the table. The data for the rows comes from the `contacts.js` file, which is already linked and loaded in the `index.html` file. You can access it by using the `contacts` variable. For example, `contacts[0]` will give you the first contact object in the array.
 
