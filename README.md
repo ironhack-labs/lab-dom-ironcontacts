@@ -79,18 +79,22 @@ First, let's help you get familiar with the starter code. Take a moment and revi
 
 <br>
 
-Next, open the `index.html` file in your browser using the Live Server extension.
+Next, open the `index.html` file in your browser using the Live Server extension. You should see a table with 1 *example row*, similar to the one shown in the image below.
+
+The code for the example row is located in the `index.html` file, where indicated by the comment `<!-- Example row -->`. You can use this row as a reference for the structure of the rows you will be adding in the following iterations.
 
 <br>
 
-<p align="center">
-  <img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/labs/lab-dom-ironcontacts/01-lab-dom-iteration-0.png" alt="iteration 0" width="700">
-</p>
+<details>
+  <summary><b>See Expected Result</b></summary>
 
-<br>
+  <p align="center">
+    <img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/labs/lab-dom-ironcontacts/01-lab-dom-iteration-0.png" alt="iteration 0" width="700">
+  </p>
 
-You should see a table with 1 *example row*, similar to the one shown in the image above.
-The code for the example row is located in the `index.html` file, where indicated by the comment `<!-- Example row -->`.
+  <br>
+
+</details>
 
 <br>
 
