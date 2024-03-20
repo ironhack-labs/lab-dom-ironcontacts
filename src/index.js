@@ -48,7 +48,7 @@ const threeContacts = contacts.splice(0, 3);
 // Your code goes here ...
 threeContacts.forEach((currentContact) => {
   const newRow = document.createElement("tr");
-  newRow.setAttribute("data-contact-name", randomContact.name); // Set data-contact-name
+  newRow.setAttribute("data-contact-name", currentContact.name); // Correctly set to currentContact.name
 
   newRow.innerHTML = `
     <td>
