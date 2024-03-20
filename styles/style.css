@@ -69,8 +69,8 @@ button:hover {
   background-color: #a9a7a7;  
 }
 
-
-.btn-like.selected {
+/* Favorite button - selected */
+.btn-favorite.selected {
   background-color: #fd9a9a;
 }
 

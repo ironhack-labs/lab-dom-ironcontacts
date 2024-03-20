@@ -90,17 +90,16 @@ Next, open the `index.html` file in your browser using the Live Server extension
 <br>
 
 You should see a table with 1 *example row*, similar to the one shown in the image above.
-
-The code for the example row is located in the `index.js` file, where indicated by the comment `// ITERATION 0 | Example Row`. We included it there as an example to give you a starting point and to help you understand how the table rows should be structured.
+The code for the example row is located in the `index.html` file, where indicated by the comment `<!-- Example row -->`.
 
 <br>
 
 
-
+### Iteration 0 | Contacts
 
 In the following iterations, you will be adding more rows to the table. The data for the rows comes from the `contacts.js` file, which is already linked and loaded in the `index.html` file. You can access it by using the `contacts` variable. For example, `contacts[0]` will give you the first contact object in the array.
 
-<tr><td><img src="https://image.tmdb.org/t/p/w500/2dGBb1fOcNdZjtQToVPFxXjm4ke.jpg"></td><td>Al Pacino</td><td><button>Delete</button></td><td><button class="btn-like">🤍</button></td></tr>
+
 
 <br>
 
@@ -110,8 +109,24 @@ In the following iterations, you will be adding more rows to the table. The data
 
 Let's start by displaying the first 3 contacts in the table. To do so, you will need to:
 
-1. Get the **first 3 contacts** from the `contacts` array.<br>You can use the `splice()` method for this.
-2. Iterate over the newly obtained array of 3 contacts and, for each contact, create a new table row and append it to the table body.<br>You can use the *Iteration 0* code as an example of what its structure should be.
+1. Get the **first 3 contacts** from the `contacts` array.<br>You can use the `splice()` method for this. Remember that the `splice()` method modifies the original array, and returns the results as a new array.
+2. Iterate over the newly obtained array of 3 contacts and, for each contact, create a new table row and append it to the table body.<br>You can check the existing table row in the `index.html` as an example of what its structure should be:
+```html
+      <!-- Example row -->
+      <tr>
+        <td>
+          <img src="https://image.tmdb.org/t/p/w500/2dGBb1fOcNdZjtQToVPFxXjm4ke.jpg">
+        </td>
+        <td>Al Pacino</td>
+        <td>
+          <button>Delete</button>
+        </td>
+        <td>
+          <button class="btn-favorite">🤍</button>
+        </td>
+      </tr>
+      <!-- / Example row -->
+```
 3. Append each new table row to the table body. You can use the `appendChild()` method for this.
 
 <br>
@@ -133,10 +148,10 @@ Let's start by displaying the first 3 contacts in the table. To do so, you will 
 
 As you can see, each row has a *Delete* button. However, the buttons don't do anything yet. Let's fix that!
 Your task in this iteration is to add an event listener to each *Delete* button so that, when clicked, the corresponding row is removed from the table.
-You will need to do this  in the same loop where you are creating the new table rows. As soon as you create a new table row, you should also add an event listener to the delete button of that row. Here are the steps you should follow:
+You will need to do this in the same loop where you are creating the new table rows. As soon as you create a new table row, you should also add an event listener to the delete button of that row. Here are the steps you should follow:
 
-1. Get the *Delete* button element from a newly created row.<br> After creating a new table row, you can call the `querySelector()` method on the newly created table row to search for the *Delete* button only inside that row, like this: `newRow.querySelector(...)`.
-2. Add an event listener to the *Delete* button element, for the `click` event.<br> You can use the `addEventListener()` method for this.
+1. Get the *Delete* button element from a newly created row.<br> After creating a new table row, you can call the `querySelector()` method on the newly created element to search for the *Delete* button only inside that row, like this: `newRow.querySelector(...)`.
+2. Add an event listener to the *Delete* button element, for the `"click"` event.<br> You should use the `addEventListener()` method for this.
 3. When the *Delete* button is clicked, the *row* element should be removed from the table.<br> You can use the `remove()` method for this.
 
 <br>
@@ -154,14 +169,14 @@ You will need to do this  in the same loop where you are creating the new table 
 
 <br>
 
-### Iteration 3 | Like Buttons
+### Iteration 3 | Favorite Buttons
 
-Now that you have the *Delete* buttons working, let's move on to the *Like* buttons. Your task in this iteration is to repeat the process you followed in the previous iteration, but for the *Like* buttons. When clicked the *Like* button should toggle (add or remove) the `class` `"selected"` on the corresponding row. You will need to do this in the same loop where you are creating the new table rows. As soon as you create a new table row, you should also add an event listener to the *Like* button of that row. Here are the steps you should follow:
+Now that you have the *Delete* buttons working, let's move on to the *Favorite* buttons. Your task in this iteration is to repeat the process you followed in the previous iteration, but for the *Favorite* buttons. When clicked the *Favorite* button should toggle (add or remove) the `class` `"selected"` on the corresponding row. You will need to do this in the same loop where you are creating the new table rows. As soon as you create a new table row, you should also add an event listener to the *Favorite* button of that row. Here are the steps you should follow:
 
-1. Get the *Like* button element from a newly created row.
-2. Add an event listener to the *Like* button element, for the `click` event.
-3. When the *Like* button is clicked, the `class` of the *row* element should be toggled between `class="btn-like"` and `class="btn-like selected"`. You can use the `element.classList.toggle()` method for this.
-4. The class `selected` will make the button appear red when clicked and gray (original color) when clicked again. You can see the CSS styles for the `selected` class in the `style.css` file.
+1. Get the *Favorite* button element from a newly created row.
+2. Add an event listener to the *Favorite* button element, for the `"click"` event.
+3. When the button is clicked, the `class` of the *row* element should be toggled between `class="btn-favorite"` and `class="btn-favorite selected"`.
+4. The class `selected` will make the button appear red when clicked and gray (original color) when clicked again. You can see the CSS styles for the `.selected` class in the `style.css` file.
 
 <br>
 
@@ -185,7 +200,7 @@ For the final iteration, you will need to implement the event listener for the *
 1. Add an event listener to the *Add Random Contact* button element, for the `click` event.
 2. When the *Add Random Contact* button is clicked, get a random contact from the `contacts` array.<br>You can use the `Math.random()` method to generate a random number.
 3. Create a new table row for the new contact and append it to the table body.
-4. Add event listeners to the *Delete* and *Like* buttons of the new row, following the same steps as in the previous iterations.
+4. Add event listeners to the *Delete* and *Favorite* buttons of the new row, following the same steps as in the previous iterations.
 
 <br>
 
@@ -212,7 +227,7 @@ For this bonus iteration, implement the button *Sort by Name* and the correspond
 3. Create a helper function `showContacts()` that will display the contacts in the table. This function should take an array of contacts as an argument and display them in the table. When called the function should:
     - Remove the existing rows from the table.
     - Iterate over the array of contacts and, for each contact, create a new table row and append it to the table body.
-    - Add event listeners to the *Delete* and *Like* buttons of the new rows.
+    - Add event listeners to the *Delete* and *Favorite* buttons of the new rows.
 4. Update the rest of the code so that whenever the contacts list is updated, the `showContacts()` function is called to display the updated list.
 
 <br> 
