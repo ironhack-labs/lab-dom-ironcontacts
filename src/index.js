@@ -38,24 +38,81 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+threeContacts.forEach((el) =>{
+  const row = document.createElement("tr");
+  row.innerHTML = `
+  <td>
+    <img src="${el.pictureUrl}" />
+  </td>
+  <td> ${el.name} </td>
+  <td> ${el.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`
+tableBody.appendChild(row)
+
+// ITERATION 2 - Delete Buttons
+  
+  
+
+const deleteButton = row.querySelector(".btn-delete")
+deleteButton.addEventListener("click", function(){
+row.remove()
+  })
+
+// ITERATION 3 - Like Buttons
+
+const likeButton = row.querySelector(".btn-like")
+likeButton.addEventListener("click",function(){
+likeButton.classList.toggle("selected")
+} )
+
+})
 
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
-
-  // ITERATION 3 - Like Buttons
-
-  // Your code goes here ...
-
-  
-  
+   
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
+buttonAddRandom.addEventListener("click", function () {
+  const randomIndex = Math.floor(Math.random() * contacts.length)
 
-// Your code goes here ...
+  const randomContact1 = contacts[randomIndex]
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>
+      <img src="${randomContact1.pictureUrl}" />
+    </td>
+    <td> ${randomContact1.name} </td>
+    <td> ${randomContact1.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `
+  tableBody.appendChild(row)
+
+  const deleteButton = row.querySelector(".btn-delete")
+  deleteButton.addEventListener("click", function(){
+  row.remove()
+  })
+  
+const likeButton = row.querySelector(".btn-like")
+likeButton.addEventListener("click",function(){
+likeButton.classList.toggle("selected")
+} )
+
+  
+  
+})
