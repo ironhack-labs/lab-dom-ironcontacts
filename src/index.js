@@ -31,6 +31,7 @@ let deleteButton = exampleRow.querySelector(".btn-delete");
 
 deleteButton.addEventListener("click", function () {
   exampleRow.remove();
+  contacts.push(randomContact);
 });
 
 tableBody.appendChild(exampleRow);
@@ -64,6 +65,7 @@ threeContacts.forEach((contact) => {
 
   deleteButton.addEventListener("click", function () {
     row.remove();
+    contacts.push(contact);
   });
 
   // ITERATION 3 - Like Buttons
