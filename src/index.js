@@ -70,9 +70,8 @@ row.remove()
 
 const likeButton = row.querySelector(".btn-like")
 likeButton.addEventListener("click",function(){
-this.classlist.toggle("btn-like.selected")
+likeButton.classList.toggle("selected")
 } )
-
 
 })
 
@@ -83,15 +82,16 @@ this.classlist.toggle("btn-like.selected")
 // Bonus: ITERATION 4 - Add Random Contacts
 buttonAddRandom.addEventListener("click", function () {
   const randomIndex = Math.floor(Math.random() * contacts.length)
+
   const randomContact1 = contacts[randomIndex]
 
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>
-      <img src="${randomContact1 .pictureUrl}" />
+      <img src="${randomContact1.pictureUrl}" />
     </td>
-    <td> ${randomContact1 .name} </td>
-    <td> ${randomContact1 .popularity.toFixed(2)} </td>
+    <td> ${randomContact1.name} </td>
+    <td> ${randomContact1.popularity.toFixed(2)} </td>
     <td>
       <button class="btn-delete">Delete</button>
     </td>
@@ -107,5 +107,12 @@ buttonAddRandom.addEventListener("click", function () {
   deleteButton.addEventListener("click", function(){
   row.remove()
   })
+  
+const likeButton = row.querySelector(".btn-like")
+likeButton.addEventListener("click",function(){
+likeButton.classList.toggle("selected")
+} )
+
+  
   
 })
