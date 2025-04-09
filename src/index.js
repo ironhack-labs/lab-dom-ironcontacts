@@ -31,26 +31,47 @@ exampleRow.innerHTML = `
 tableBody.appendChild(exampleRow);
 
 
-
-
-
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
 
+threeContacts.forEach (elm => {
+  const threeRow = document.createElement("tr")
+  threeRow.innerHTML = `
+  <td>
+    <img src="${elm.pictureUrl}" />
+  </td>
+  <td> ${elm.name} </td>
+  <td> ${elm.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `
+  
+// ITERATION 2 - Delete Buttons
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+const btnOne = threeRow.querySelector(".btn-delete")
 
-  // ITERATION 3 - Like Buttons
+btnOne.addEventListener(`click` , () => {
+  threeRow.remove ()
+})
 
-  // Your code goes here ...
+// ITERATION 3 - Like Buttons
+
+const btnLike = threeRow.querySelector(".btn-like")
+
+btnLike.addEventListener(`click` , () => {
+  btnLike.classList.toggle('selected')
+})
+tableBody.appendChild(threeRow)
+})
 
   
   
