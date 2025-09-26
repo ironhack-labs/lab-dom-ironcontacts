@@ -1,3 +1,5 @@
+
+
 // HTML ELEMENTS
 const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
@@ -38,19 +40,41 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+threeContacts.forEach(contact => {
+  const row = document.createElement('tr');
 
+  row.innerHTML = `
+    <td><img src="${contact.pictureUrl}" alt="${contact.name}"></td>
+    <td>${contact.name}</td>
+    <td>${contact.popularity.toFixed(2)}</td>
+    <td><button class="btn-delete">Delete</button></td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like">
+      </button>
+    </td>
+  `;
+// ITERATION 2 - Delete button
 
-  
-  // ITERATION 2 - Delete Buttons
-  
+  // Delete button listener
+  const deleteBtn = row.querySelector('.btn-delete');
+  deleteBtn.addEventListener('click', () => row.remove());
+ // ITERATION 3 - Like Buttons
+
   // Your code goes here ...
+  const likeBtn = row.querySelector('.btn-like');
+  likeBtn.addEventListener('click', () => {
+    likeBtn.classList.toggle('selected');
+  });
+
+
+  tableBody.appendChild(row);
+});
   
   
 
-  // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
+ 
 
   
   
