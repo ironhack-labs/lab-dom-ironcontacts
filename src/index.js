@@ -39,13 +39,44 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+    threeContacts.forEach(element => {
+      const exampleRow1 = document.createElement("tr");
+      exampleRow1.innerHTML = `
+      <td>
+      <img src="${element.pictureUrl}" />
+      </td>
+      <td> ${element.name} </td>
+      <td> ${element.popularity.toFixed(2)} </td>
+      <td>
+      <button class="btn-delete">Delete</button>
+      </td>
+      <td>
+      <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+      </button>
+      </td>
+      `;
+      tableBody.appendChild(exampleRow1);
 
+
+      let deleteButton = exampleRow1.querySelector('.btn-delete');
+      // console.log(deleteButton);
+      deleteButton.onclick = function() {
+        tableBody.removeChild(exampleRow1);
+      };
+
+      let likeButton = exampleRow1.querySelector('.btn-like');
+      // console.log(likeButton);
+      likeButton.onclick = function() {
+        likeButton.classList.toggle('selected');
+      };
+    });
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
-  
+
   
 
   // ITERATION 3 - Like Buttons
@@ -59,3 +90,45 @@ const threeContacts = contacts.splice(0, 3);
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+let addContactButton = document.querySelector('#btn-add-random');
+console.log(addContactButton);
+addContactButton.onclick = function() {
+
+  // Splice 1 element from the contacts array at the random index
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const splicedArr = contacts.splice(randomIndex, 1);
+
+  // Get the element from the spliced array
+  const randomContact = splicedArr[0];
+
+  const exampleRow3 = document.createElement("tr");
+  exampleRow3.innerHTML = `
+    <td>
+      <img src="${randomContact.pictureUrl}" />
+    </td>
+    <td> ${randomContact.name} </td>
+    <td> ${randomContact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  tableBody.appendChild(exampleRow3);
+
+  let deleteButton = exampleRow3.querySelector('.btn-delete');
+  // console.log(deleteButton);
+  deleteButton.onclick = function() {
+    tableBody.removeChild(exampleRow3);
+  };
+
+  let likeButton = exampleRow3.querySelector('.btn-like');
+  // console.log(likeButton);
+  likeButton.onclick = function() {
+    likeButton.classList.toggle('selected');
+  };
+};
