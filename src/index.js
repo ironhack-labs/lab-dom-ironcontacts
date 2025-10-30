@@ -38,24 +38,71 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
-
-
+threeContacts.forEach((contact) =>{
+  const row = document.createElement("tr");
+  row.innerHTML = `
+  <td>
+    <img src="${contact.pictureUrl}" />
+  </td>
+  <td> ${contact.name} </td>
+  <td> ${contact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `;
   
   // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+  const deleteButton = row.querySelector(".btn-delete");
+  deleteButton.addEventListener("click", (e) => {
+      row.remove();
+  });
 
   // ITERATION 3 - Like Buttons
+  const likeButton = row.querySelector(".btn-like");
+  likeButton.addEventListener("click", (e) => {
+      likeButton.classList.toggle("selected");
+  });
 
-  // Your code goes here ...
-
-  
-  
-
+  tableBody.appendChild(row);
+});
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+buttonAddRandom.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const random = contacts.splice(randomIndex, 1);
+  const newRow = document.createElement("tr");
+  console.log(random);
+  
+  newRow.innerHTML = `
+  <td>
+    <img src="${random[0].pictureUrl}" />
+  </td>
+  <td> ${random[0].name} </td>
+  <td> ${random[0].popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+  `;
+  
+  const deleteButton = newRow.querySelector(".btn-delete");
+  deleteButton.addEventListener("click", (e) => {
+      newRow.remove();
+  });
+
+  const likeButton = newRow.querySelector(".btn-like");
+  likeButton.addEventListener("click", (e) => {
+      likeButton.classList.toggle("selected");
+  });
+  tableBody.appendChild(newRow);
+})
