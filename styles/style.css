@@ -70,6 +70,13 @@ td {
   margin: 0 auto;
 }
 
+.btn-like.selected {
+  background-color: #ff6347;
+  border: 1px solid red;
+}
+
+
+
 .btn-like:hover {
   transition: 0.2s;
   background-color: #a9a7a7;  
