@@ -39,23 +39,68 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach(contact => {
+  const row = document.createElement("tr");
 
+  row.innerHTML = `
+    <td><img src="${contact.pictureUrl}" /></td>
+    <td>${contact.name}</td>
+    <td>${contact.popularity.toFixed(2)}</td>
+    <td><button class="btn-delete">Delete</button></td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like">
+      </button>
+    </td>
+  `;
 
-  
   // ITERATION 2 - Delete Buttons
-  
   // Your code goes here ...
-  
-  
+  const deleteBtn = row.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", () => {
+    row.remove();
+  });
 
   // ITERATION 3 - Like Buttons
-
   // Your code goes here ...
+  const likeBtn = row.querySelector(".btn-like");
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("selected");
+  });
 
-  
-  
+  tableBody.appendChild(row);
+});
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
-
 // Your code goes here ...
+buttonAddRandom.addEventListener("click", () => {
+  if (contacts.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const randomContact = contacts.splice(randomIndex, 1)[0];
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td><img src="${randomContact.pictureUrl}" /></td>
+    <td>${randomContact.name}</td>
+    <td>${randomContact.popularity.toFixed(2)}</td>
+    <td><button class="btn-delete">Delete</button></td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like">
+      </button>
+    </td>
+  `;
+
+  // Delete button
+  const deleteBtn = row.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", () => row.remove());
+
+  // Like button
+  const likeBtn = row.querySelector(".btn-like");
+  likeBtn.addEventListener("click", () => likeBtn.classList.toggle("selected"));
+
+  tableBody.appendChild(row);
+});
