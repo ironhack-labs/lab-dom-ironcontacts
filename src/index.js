@@ -38,24 +38,120 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+threeContacts.forEach((contact)=>{
+const row = document.createElement("tr")
+
+row.innerHTML= `
+<td>
+<img src="${contact.pictureUrl}" />
+</td>
+<td> ${contact.name} </td>
+<td> ${contact.popularity.toFixed(2)} </td>
+
+<td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+
+
+tableBody.appendChild(row);
+
+})
+
+
 
 
   
   // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
+
+const deletebtn = document.querySelectorAll(".btn-delete");
+deletebtn.forEach((oneCeleb) => {
+  oneCeleb.addEventListener("click", (event) => {
+    event.currentTarget.parentNode.parentNode.remove();
+  });
+});
+
+
+      
+
+
+
   
   
 
   // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
 
-  
-  
+const likebtn = document.querySelectorAll(".btn-like");
+
+likebtn.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+
+   
+    // const likeButton = event.target.closest(".btn-like");
+
+    // likeButton.classList.toggle("selected");
+    btn.classList.toggle("selected");
+  });
+});
+
+
+
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+
+
+buttonAddRandom.addEventListener("click", () => {
+
+  
+  if (contacts.length === 0) return;
+
+  
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+
+  
+  const randomContact = contacts.splice(randomIndex, 1)[0];
+
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td><img src="${randomContact.pictureUrl}" /></td>
+    <td>${randomContact.name}</td>
+    <td>${randomContact.popularity.toFixed(2)}</td>
+
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  const deleteBtn = row.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", (event) => {
+    const btn = event.target.closest(".btn-delete");
+    btn.closest("tr").remove();
+  });
+
+
+  const likeBtn = row.querySelector(".btn-like");
+  likeBtn.addEventListener("click", (event) => {
+    const btn = event.target.closest(".btn-like");
+    btn.classList.toggle("selected");
+  });
+
+
+  tableBody.appendChild(row);
+});
