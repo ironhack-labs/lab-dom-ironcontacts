@@ -1,61 +1,50 @@
-// HTML ELEMENTS
-const buttonAddRandom = document.querySelector("#btn-add-random");
-const tableBody = document.querySelector("tbody#contacts");
-
-
 // ITERATION 0 | Example Row
-// Splice 1 element from the contacts array at the random index
-const randomIndex = Math.floor(Math.random() * contacts.length);
-const splicedArr = contacts.splice(randomIndex, 1);
+// (Este código ya estaba como ejemplo, lo dejamos tal cual o lo comentamos si ya no lo necesitas)
 
-// Get the element from the spliced array
-const randomContact = splicedArr[0];
+// Seleccionamos el tbody de la tabla
+const tbody = document.querySelector("tbody");
 
-const exampleRow = document.createElement("tr");
-exampleRow.innerHTML = `
-  <td>
-    <img src="${randomContact.pictureUrl}" />
-  </td>
-  <td> ${randomContact.name} </td>
-  <td> ${randomContact.popularity.toFixed(2)} </td>
-  <td>
-    <button class="btn-delete">Delete</button>
-  </td>
-  <td>
-    <button class="btn-like">
-      <img src="./images/icon.png" alt="like" />
-    </button>
-  </td>
-`;
+// ITERATION 1 | Display 3 Contacts
+// Obtenemos una copia de los primeros 3 contactos (sin modificar el array original)
+// Usamos slice() en lugar de splice() para no alterar contacts
+const firstThreeContacts = contacts.slice(0, 3);
 
-tableBody.appendChild(exampleRow);
+// Iteramos sobre los 3 contactos
+firstThreeContacts.forEach(contact => {
+  // Crear nueva fila (<tr>)
+  const newRow = document.createElement("tr");
 
+  // Estructura de la fila (igual que el ejemplo)
+  newRow.innerHTML = `
+    <td>${contact.name}</td>
+    <td>${contact.phone}</td>
+    <td>${contact.email}</td>
+    <td>${contact.company}</td>
+    <td>
+      <button class="btn-delete">Delete</button>
+      <button class="btn-like">❤️</button>
+    </td>
+  `;
 
+  // ITERATION 2 | Delete Buttons
+  // Buscamos el botón Delete dentro de esta fila específica
+  const deleteBtn = newRow.querySelector(".btn-delete");
 
+  deleteBtn.addEventListener("click", () => {
+    // Eliminamos la fila completa del DOM
+    newRow.remove();
+  });
 
+  // ITERATION 3 | Like Buttons
+  // Buscamos el botón Like dentro de esta fila específica
+  const likeBtn = newRow.querySelector(".btn-like");
 
-// ITERATION 1 - Display 3 contacts
-// Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
+  likeBtn.addEventListener("click", () => {
+    // Toggle de la clase "selected" en la fila completa
+    // Esto cambiará el color del botón según el CSS (.selected)
+    newRow.classList.toggle("selected");
+  });
 
-// Your code goes here ...
-
-
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
-
-  // ITERATION 3 - Like Buttons
-
-  // Your code goes here ...
-
-  
-  
-
-
-// Bonus: ITERATION 4 - Add Random Contacts
-
-// Your code goes here ...
+  // Finalmente, añadimos la fila al tbody
+  tbody.appendChild(newRow);
+});
