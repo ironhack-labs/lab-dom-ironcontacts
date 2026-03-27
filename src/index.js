@@ -76,9 +76,6 @@ likeBtnExample.addEventListener("click", () => {
 });
   
 
-  
-
-
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
