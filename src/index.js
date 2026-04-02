@@ -39,23 +39,91 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach((item) => { 
+
+const newRow = document.createElement('tr')
+
+newRow.innerHTML =  
+`<td><img src ="${item.pictureUrl}" tag="${item.name}"></img></td>
+<td>${item.name}</td>
+<td>${item.popularity.toFixed(2)}</td>
+<td><button class="btn-delete">Delete</button></td>
+<td><button class="btn-like"><img src="./images/icon.png"/></button></td>`;
+
+tableBody.appendChild(newRow)
+
+
+
 
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
-  
+
+
+  const buttonDelete = document.querySelector('button.btn-delete')
+
+buttonDelete.addEventListener( "click", ()=>{
+newRow.remove()
+
+
+
+
+
+
+// ITERATION 3 - Like Buttons
+
+// Your code goes here ...
+
+
+const likeButton = document.querySelector("button.btn-like")
+
+likeButton.addEventListener( "click", ()=> {
+
+likeButton.classList.toggle("selected")
+
+
+
+})
+
+
+
+})
+
+}) 
   
 
-  // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
 
-  
-  
+
+
+
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+const randomBtn = document.getElementById("btn-add-random") 
+
+
+randomBtn.addEventListener("click", ()=> {
+  console.log("hello")
+
+let random = Math.floor(Math.random()* contacts.length )
+
+let item= contacts[random]
+
+const newRow = document.createElement('tr')
+
+newRow.innerHTML =  
+`<td><img src ="${item.pictureUrl}" tag="${item.name}"></img></td>
+<td>${item.name}</td>
+<td>${item.popularity.toFixed(2)}</td>
+<td><button class="btn-delete">Delete</button></td>
+<td><button class="btn-like"><img src="./images/icon.png"/></button></td>`;
+
+tableBody.appendChild(newRow)}
+
+)
