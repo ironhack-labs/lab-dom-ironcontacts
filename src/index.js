@@ -36,11 +36,46 @@ tableBody.appendChild(exampleRow);
 
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
+const firstThree = contacts.splice(0, 3);
+
+
 
 // Your code goes here ...
 
+  firstThree.forEach(contact => {
+  const row = document.createElement("tr");
 
+  row.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  
+const deleteButton = row.querySelector(".btn-delete");
+
+  deleteButton.addEventListener("click", function () {
+    row.remove();
+  });
+
+  const likeButton = row.querySelector(".btn-like");
+
+  likeButton.addEventListener("click", function () {
+  likeButton.classList.toggle("selected");
+});
+
+  tableBody.appendChild(row);
+});
   
   // ITERATION 2 - Delete Buttons
   
