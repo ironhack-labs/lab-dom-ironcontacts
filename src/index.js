@@ -1,6 +1,10 @@
 // HTML ELEMENTS
 const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
+//! is #contacts from html ?and what is tbody that is written ?
+// we get the class names from html or css ?
+
+
 
 
 // ITERATION 0 | Example Row
@@ -37,6 +41,67 @@ tableBody.appendChild(exampleRow);
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
+for (let i=0 ; i< threeContacts.length ;i++){
+const insertRow = document.createElement("tr");
+insertRow.innerHTML = `<td> 
+<img src ="${threeContacts[i].pictureUrl}"/> 
+</td>
+<td> ${threeContacts[i].name} </td>
+<td> ${threeContacts[i].popularity.toFixed(2)} </td>
+<td>
+    <button class="btn-delete">Delete</button>
+  </td>
+<td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`
+tableBody.appendChild(insertRow);
+
+ const buttonDelete = insertRow.querySelector(".btn-delete");
+ buttonDelete.addEventListener("click",()=> {
+  insertRow.remove();
+  })
+
+  const buttonLike= insertRow.querySelector(".btn-like");
+  buttonLike.addEventListener("click",()=> {
+    buttonLike.classList.toggle("btn-like")
+    buttonLike.classList.toggle("btn-like selected")
+  })
+}
+
+buttonAddRandom.addEventListener("click",()=> {
+
+  const randomI = Math.floor(Math.random() * contacts.length);
+const splicedArr = contacts.splice(randomI, 1);
+
+// Get the element from the spliced array
+const randomContact = splicedArr[0];
+
+const exampleRow = document.createElement("tr");
+exampleRow.innerHTML = `
+  <td>
+    <img src="${randomContact.pictureUrl}" />
+  </td>
+  <td> ${randomContact.name} </td>
+  <td> ${randomContact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+tableBody.appendChild(exampleRow);
+
+})
+
+
+
 
 // Your code goes here ...
 
@@ -46,6 +111,7 @@ const threeContacts = contacts.splice(0, 3);
   
   // Your code goes here ...
   
+ 
   
 
   // ITERATION 3 - Like Buttons
