@@ -136,7 +136,7 @@ Your task in this iteration is to add an event listener to each *Delete* button 
 You will need to do this  in the same loop where you are creating the new table rows. As soon as you create a new table row, you should also add an event listener to the delete button of that row. Here are the steps you should follow:
 
 1. Get the *Delete* button element from a newly created row.<br> After creating a new table row, you can call the `querySelector()` method on the newly created table row to search for the *Delete* button only inside that row, like this: `newRow.querySelector(...)`.
-2. Add an event listener to the *Delete* button element, for the `click` event.<br> You can use the `addEventListener()` method for this.
+2. Add an event listener to the *Delete* button element, for the `click` event.<br> You can use the `addEventListener()` method for this. 
 3. When the *Delete* button is clicked, the *row* element should be removed from the table.<br> You can use the `remove()` method for this.
 
 <br>
@@ -160,7 +160,7 @@ Now that you have the *Delete* buttons working, let's move on to the *Like* butt
 
 1. Get the *Like* button element from a newly created row.
 2. Add an event listener to the *Like* button element, for the `click` event.
-3. When the *Like* button is clicked, the `class` of the *row* element should be toggled between `class="btn-like"` and `class="btn-like selected"`. You can use the `element.classList.toggle()` method for this.
+3. When the *Like* button is clicked, the `class` of the *row* element should be toggled between `class="btn-like"` and `class="btn-like selected"`. You can use the `element.classList.toggle()` method for this. 
 4. The class `selected` will make the button appear red when clicked and gray (original color) when clicked again. You can see the CSS styles for the `selected` class in the `style.css` file.
 
 <br>
