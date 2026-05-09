@@ -40,22 +40,77 @@ const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
 
+firstThree.forEach((contact) => {
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${contact.name}</td>
+    <td>${contact.phone}</td>
+    <td>${contact.popularity}</td>
+    <td><img src="${contact.pictureUrl}" width="50" /></td>
+    <td><button class="btn-delete">Delete</button></td>
+    <td><button class="btn-like">Like</button></td>
+  `;
+
+  tableBody.appendChild(row);
+
+return threeContacts
+
+}
+
+ 
+
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
   
-  
+  const deleteBtn = row.querySelector(".btn-delete");
+
+deleteBtn.addEventListener("click", () => {
+  row.remove();
+});
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
 
-  
+  const likeBtn = row.querySelector(".btn-like");
+
+likeBtn.addEventListener("click", () => {
+  likeBtn.classList.toggle("selected");
+});
   
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+const addBtn = document.querySelector("#addRandom");
+
+addBtn.addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const contact = contacts[randomIndex];
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${contact.name}</td>
+    <td>${contact.phone}</td>
+    <td>${contact.popularity}</td>
+    <td><img src="${contact.pictureUrl}" width="50" /></td>
+    <td><button class="btn-delete">Delete</button></td>
+    <td><button class="btn-like">Like</button></td>
+  `;
+
+  tableBody.appendChild(row);
+
+  const deleteBtn = row.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", () => row.remove());
+
+  const likeBtn = row.querySelector(".btn-like");
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("selected");
+  });
+});
