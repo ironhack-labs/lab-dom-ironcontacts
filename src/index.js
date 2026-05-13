@@ -11,6 +11,7 @@ const splicedArr = contacts.splice(randomIndex, 1);
 // Get the element from the spliced array
 const randomContact = splicedArr[0];
 
+
 const exampleRow = document.createElement("tr");
 exampleRow.innerHTML = `
   <td>
@@ -39,6 +40,42 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach((contact) => {
+  console.log(contact)
+
+  const tabRow = document.createElement("tr");
+  tabRow.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  tableBody.appendChild(tabRow);  
+
+  // find the delete button
+  const delBtn = tabRow.querySelector(".btn-delete")
+  delBtn.addEventListener("click", () => {
+    tabRow.remove()
+  })
+
+  // do the same with the like button
+  const likeBtn = tabRow.querySelector(".btn-like")
+  likeBtn.addEventListener("click", () => {
+    // toggle
+    likeBtn.classList.toggle("selected")
+  })
+
+})
 
 
   
