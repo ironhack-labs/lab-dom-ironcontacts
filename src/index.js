@@ -30,6 +30,13 @@ exampleRow.innerHTML = `
 
 tableBody.appendChild(exampleRow);
 
+exampleRow.querySelector(".btn-delete").addEventListener("click", () => {
+  exampleRow.remove();
+});
+
+exampleRow.querySelector(".btn-like").addEventListener("click", function () {
+  this.classList.toggle("selected");
+});
 
 
 
@@ -39,23 +46,77 @@ tableBody.appendChild(exampleRow);
 const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
+threeContacts.forEach((contact) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
 
+  tableBody.appendChild(row);
 
-  
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  row.querySelector(".btn-delete").addEventListener("click", () => {
+    row.remove();
+  });
   
   
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
-
-  
-  
+  row.querySelector(".btn-like").addEventListener("click", function () {
+    this.classList.toggle("selected");
+  });
+});
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+buttonAddRandom.addEventListener("click", () => {
+  if (contacts.length === 0) return;
+
+  const randomIdx = Math.floor(Math.random() * contacts.length);
+  const pickedContact = contacts.splice(randomIdx, 1)[0];
+
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td>
+      <img src="${pickedContact.pictureUrl}" />
+    </td>
+    <td> ${pickedContact.name} </td>
+    <td> ${pickedContact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+
+  tableBody.appendChild(newRow);
+
+  newRow.querySelector(".btn-delete").addEventListener("click", () => {
+    newRow.remove();
+  });
+
+  newRow.querySelector(".btn-like").addEventListener("click", function () {
+    this.classList.toggle("selected");
+  });
+});
