@@ -8,6 +8,7 @@ const tableBody = document.querySelector("tbody#contacts");
 const randomIndex = Math.floor(Math.random() * contacts.length);
 const splicedArr = contacts.splice(randomIndex, 1);
 
+
 // Get the element from the spliced array
 const randomContact = splicedArr[0];
 
