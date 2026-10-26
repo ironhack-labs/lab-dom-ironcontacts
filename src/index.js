@@ -31,31 +31,92 @@ exampleRow.innerHTML = `
 tableBody.appendChild(exampleRow);
 
 
-
-
-
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
-const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+let threeContacts = contacts.splice(0, 3);
+
+threeContacts.forEach(el => {
+
+const newRows = document.createElement("tr");
+
+newRows.innerHTML = `
+  <td>
+    <img src="${el.pictureUrl}" />
+  </td>
+  <td> ${el.name} </td>
+  <td> ${el.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+const dltBtn = newRows.querySelector('.btn-delete');
+
+dltBtn.addEventListener('click', (e)=>{
+  newRows.remove();
+});
+
+const likeBtn = newRows.querySelector('.btn-like');
+
+likeBtn.addEventListener('click', ()=>{
+  
+  likeBtn.classList.toggle('selected');
+})
+
+tableBody.appendChild(newRows);
 
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+});
 
-  // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
 
-  
-  
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+buttonAddRandom.addEventListener('click',()=>{
+
+  let randomactor = contacts[Math.floor(Math.random() * contacts.length)];
+
+  let randomRow = document.createElement("tr");
+
+  randomRow.innerHTML = `
+  <td>
+    <img src="${randomactor.pictureUrl}" />
+  </td>
+  <td> ${randomactor.name} </td>
+  <td> ${randomactor.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+const dltBtn = randomRow.querySelector('.btn-delete');
+
+dltBtn.addEventListener('click', (e)=>{
+  randomRow.remove();
+});
+
+const likeBtn = randomRow.querySelector('.btn-like');
+
+likeBtn.addEventListener('click', ()=>{
+  
+  likeBtn.classList.toggle('selected');
+})
+
+
+tableBody.appendChild(randomRow);
+})
+
+
