@@ -2,7 +2,6 @@
 const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
 
-
 // ITERATION 0 | Example Row
 // Splice 1 element from the contacts array at the random index
 const randomIndex = Math.floor(Math.random() * contacts.length);
@@ -30,32 +29,76 @@ exampleRow.innerHTML = `
 
 tableBody.appendChild(exampleRow);
 
-
-
-
-
 // ITERATION 1 - Display 3 contacts
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
+threeContacts.forEach((item) => {
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+  <td>
+    <img src="${item.pictureUrl}" />
+  </td>
+  <td> ${item.name} </td>
+  <td> ${item.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
 
+  const deleteBtn = newRow.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", () => {
+    newRow.remove();
+  });
 
-  
-  // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+  const likeBtn = newRow.querySelector(".btn-like");
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("selected");
+  });
+  tableBody.appendChild(newRow);
+});
 
-  // ITERATION 3 - Like Buttons
+// ITERATION 2 - Delete Buttons
 
-  // Your code goes here ...
-
-  
-  
-
+// ITERATION 3 - Like Buttons
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
-// Your code goes here ...
+buttonAddRandom.addEventListener("click", () => {
+  const randomIndex2 = Math.floor(Math.random() * contacts.length);
+  const splicedArr2 = contacts.splice(randomIndex2, 1);
+  const newRandomContact = splicedArr2[0];
+
+  const randomRow = document.createElement("tr");
+  randomRow.innerHTML = `
+  <td>
+    <img src="${newRandomContact.pictureUrl}" />
+  </td>
+  <td> ${newRandomContact.name} </td>
+<td> ${newRandomContact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+  const del = randomRow.querySelector(".btn-delete");
+  del.addEventListener("click", () => {
+    randomRow.remove();
+  });
+
+  const like = randomRow.querySelector(".btn-like");
+  like.addEventListener("click", () => {
+    like.classList.toggle("selected");
+  });
+  tableBody.appendChild(randomRow);
+});
