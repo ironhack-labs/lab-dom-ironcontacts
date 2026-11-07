@@ -55,10 +55,6 @@ threeContacts.forEach((contact) => {
 
   const deleteButton = newRow.querySelector(".btn-delete");
 
-  // deleteButton.addEventListener("click", () => {
-  //   exampleRow.remove();
-  // });
-
   deleteButton.addEventListener("click", () => {
     newRow.remove();
   });
@@ -89,9 +85,9 @@ buttonAddRandom.addEventListener("click", () => {
 
   tableBody.appendChild(newRandomRow);
 
-  const buttonLike2 = newRandomRow.querySelector(".btn - like");
+  const buttonLike2 = newRandomRow.querySelector(".btn-like");
   buttonLike2.addEventListener("click", () => {
-    buttonLike2.classList.toggle("select");
+    buttonLike2.classList.toggle("selected");
   });
 
   const buttonDelete2 = newRandomRow.querySelector(".btn-delete");
