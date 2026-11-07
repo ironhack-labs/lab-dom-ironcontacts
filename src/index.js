@@ -38,6 +38,28 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
+threeContacts.forEach((person) => {
+
+  const newRow = document.createElement("tr");
+
+  newRow.innerHTML = `
+  <td>
+    <img src="${person.pictureUrl}" />
+  </td>
+  <td> ${person.name} </td>
+  <td> ${person.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+  
+  tableBody.appendChild(newRow);
+});
 // Your code goes here ...
 
 
@@ -59,3 +81,5 @@ const threeContacts = contacts.splice(0, 3);
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+console.log(threeContacts);
