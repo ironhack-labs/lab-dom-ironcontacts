@@ -68,9 +68,17 @@ allRow.forEach((row) => {
   });
 });
 
-// ITERATION 3 - Like Buttons 
+// ITERATION 3 - Like Buttons  
 
+  allRow.forEach((row) => { 
+    const likeButtons = row.querySelector(".btn-like");
 
+    likeButtons.addEventListener("click", () => {
+        likeButtons.classList.toggle("selected");
+    });
+
+  }); 
+ 
 
 
 // Your code goes here ...
