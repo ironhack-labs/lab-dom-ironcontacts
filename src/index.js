@@ -38,24 +38,41 @@ tableBody.appendChild(exampleRow);
 // Get the first 3 contacts from the 'contacts' array.
 const threeContacts = contacts.splice(0, 3);
 
-// Your code goes here ...
-
-
+threeContacts.forEach((contact) => {
+  const newInt = document.createElement( "tr");
+  newInt.innerHTML = `
+   <td>
+     <img src="${contact.pictureUrl}" />
+   </td>
+   <td> ${contact.name} </td> 
+   <td> ${contact.popularity.toFixed(2)} </td>
+   <td>
+    <button class="btn-delete">Delete</button>
+    </td>
+   <td>
+     <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+ `;
   
   // ITERATION 2 - Delete Buttons
-  
-  // Your code goes here ...
-  
-  
+ const deleteButton = newInt.querySelector(".btn-delete");
 
+ deleteButton.addEventListener("click", () => {
+  newInt.remove();
+ });
+  
   // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
+const likeButton = newInt.querySelector(".btn-like");
 
+likeButton.addEventListener("click", () => {
+  likeButton.classList.toggle("selected");
+});
+
+tableBody.appendChild(newInt);
+});
   
-  
-
-
 // Bonus: ITERATION 4 - Add Random Contacts
-
-// Your code goes here ...
+//
