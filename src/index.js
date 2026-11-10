@@ -4,12 +4,14 @@ const tableBody = document.querySelector("tbody#contacts");
 
 
 // ITERATION 0 | Example Row
-// Splice 1 element from the contacts array at the random index
-const randomIndex = Math.floor(Math.random() * contacts.length);
-const splicedArr = contacts.splice(randomIndex, 1);
+// function to remove and return a random contact from the contacts array
+function getRandomContact() {
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const splicedArr = contacts.splice(randomIndex, 1);
+  return splicedArr[0];
+}
 
-// Get the element from the spliced array
-const randomContact = splicedArr[0];
+const randomContact = getRandomContact();
 
 const exampleRow = document.createElement("tr");
 exampleRow.innerHTML = `
@@ -57,25 +59,84 @@ threeContacts.forEach((contact) => {
     </td>
   `;
 
-  tableBody.appendChild(row);
+// ITERATION 2 - Delete Buttons
+// Attach event listener to all delete buttons in the row
+const deleteButtons = row.querySelectorAll(".btn-delete");
+
+deleteButtons.forEach((deleteButton) => {
+  // 2. Listen for clicks on it
+  deleteButton.addEventListener("click", () => {
+    // 3. Remove the row from the table
+    row.remove();
+  });
 });
 
+tableBody.appendChild(row);
+});
 
+// ITERATION 3 - Like Buttons
+ const likeButtons = tableBody.getElementsByClassName('btn-like')
+
+    const likeButtonsArray = [...likeButtons]
   
-  // ITERATION 2 - Delete Buttons
+  likeButtonsArray.forEach((button) => {
   
-  // Your code goes here ...
-  
+    button.addEventListener('click', () => {
+      console.log("Hitting like button!!!")
+      button.classList.toggle('selected')
+    })
+  })
   
 
-  // ITERATION 3 - Like Buttons
 
-  // Your code goes here ...
+// function to add a contact row to the table
+function addContactRow(contact) {
+  const row = document.createElement("tr");
 
-  
-  
+  row.innerHTML = `
+    <td>
+      <img src="${contact.pictureUrl}" />
+    </td>
+    <td> ${contact.name} </td>
+    <td> ${contact.popularity.toFixed(2)} </td>
+    <td>
+      <button class="btn-delete">Delete</button>
+    </td>
+    <td>
+      <button class="btn-like">
+        <img src="./images/icon.png" alt="like" />
+      </button>
+    </td>
+  `;
+  // Attaching delete event
+  const deleteButtons = row.querySelectorAll(".btn-delete");
+  deleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener("click", () => {
+      row.remove();
+    });
+  });
+
+  // attaching like event
+  const likeButtons = row.querySelectorAll(".btn-like");
+  likeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      button.classList.toggle('selected');
+    });
+  });
+
+  tableBody.appendChild(row);
+}
+
 
 
 // Bonus: ITERATION 4 - Add Random Contacts
+buttonAddRandom.addEventListener("click", () => {
+  // Do not  add anything if there are no contacts left
+  if (contacts.length === 0) return;
 
-// Your code goes here ...
+  const randomIndex = Math.floor(Math.random() * contacts.length);
+  const randomContact = contacts.splice(randomIndex, 1)[0];
+
+  addContactRow(randomContact);
+});
+
