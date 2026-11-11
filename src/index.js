@@ -40,22 +40,88 @@ const threeContacts = contacts.splice(0, 3);
 
 // Your code goes here ...
 
+  threeContacts.forEach(contact => {
+  const contactRow = document.createElement("tr");
+  contactRow.innerHTML = `
+  <td>
+    <img src="${contact.pictureUrl}" />
+  </td>
+  <td> ${contact.name} </td>
+  <td> ${contact.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+
+tableBody.appendChild(contactRow);
+
+
+
+
+
+
 
   
   // ITERATION 2 - Delete Buttons
   
   // Your code goes here ...
+  const deleteBtn = contactRow.querySelector(".btn-delete")
+  deleteBtn.addEventListener('click', () => {
+    contactRow.remove();
+  }
+  )
   
-  
+ 
 
   // ITERATION 3 - Like Buttons
 
   // Your code goes here ...
+const likeBtn = contactRow.querySelector(".btn-like")
+likeBtn.addEventListener('click', () => {
+likeBtn.classList.toggle("selected");
+});
 
-  
-  
-
+})
 
 // Bonus: ITERATION 4 - Add Random Contacts
 
 // Your code goes here ...
+
+buttonAddRandom.addEventListener('click', () => {
+  const generateRandomContact = Math.floor(Math.random() * contacts.length);
+  const randomContactArr = contacts.splice(generateRandomContact, 1)[0];
+  const newContactRow = document.createElement("tr");
+  newContactRow.innerHTML = `
+  <td>
+    <img src="${randomContactArr.pictureUrl}" />
+  </td>
+  <td> ${randomContactArr.name} </td>
+  <td> ${randomContactArr.popularity.toFixed(2)} </td>
+  <td>
+    <button class="btn-delete">Delete</button>
+  </td>
+  <td>
+    <button class="btn-like">
+      <img src="./images/icon.png" alt="like" />
+    </button>
+  </td>
+`;
+tableBody.appendChild(newContactRow);
+
+ const deleteBtn = newContactRow.querySelector(".btn-delete")
+  deleteBtn.addEventListener('click', () => {
+    newContactRow.remove();
+  }
+  )
+
+  const likeBtn = newContactRow.querySelector(".btn-like")
+likeBtn.addEventListener('click', () => {
+likeBtn.classList.toggle("selected");
+});
+
+})
